@@ -28,3 +28,17 @@ returnFromGame.addEventListener("click", function () {
     gamePage.style.display = "none";
     homePage.style.display = "block";
 })
+
+// Guess Box Logic
+
+let currentGuess = [];
+
+document.addEventListener("keydown", function (event) {
+    if ("0123456789".includes(event.key) &&
+
+        currentGuess.length < 4) {
+        currentGuess.push(event.key)
+    }
+    console.log(currentGuess)
+})
+
