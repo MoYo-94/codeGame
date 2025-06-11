@@ -35,11 +35,15 @@ returnFromGame.addEventListener("click", function () {
 
 
 
+
+
 // Guess Box Logic
 
 
 //Logic for keypresses and build current guess to max 4 digits
 //only allow numerics keys 0-9
+//Backspace / Delete guess Logic
+
 let currentGuess = [];
 
 document.addEventListener("keydown", function (event) {
@@ -48,6 +52,12 @@ document.addEventListener("keydown", function (event) {
         currentGuess.length < 4) {
         currentGuess.push(event.key)
     }
+
+
+    if (event.key === "Backspace" || event.key === "Delete") {
+        currentGuess.pop()
+    }
+
     console.log(currentGuess)
 })
 
@@ -58,3 +68,4 @@ Array.from(guessBox).forEach((box, index) => {
     box.innerText = currentGuess[index] || "";
     // ||  if current index exists, use it, otherwise just use an emptry string to clear the box
 });
+
