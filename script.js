@@ -5,6 +5,10 @@ const howToPlayButton = document.getElementById("howToPlayButton");
 const returnToHomeButton = document.getElementById("returnToHomeButton");
 const howToPlayPage = document.getElementById("howToPlay");
 const returnFromGame = document.getElementById("returnFromGame");
+const guessBox = document.getElementsByClassName("guessBox")
+
+
+// Visual Display of Pages
 
 
 playButton.addEventListener("click", function () {
@@ -29,8 +33,13 @@ returnFromGame.addEventListener("click", function () {
     homePage.style.display = "block";
 })
 
+
+
 // Guess Box Logic
 
+
+//Logic for keypresses and build current guess to max 4 digits
+//only allow numerics keys 0-9
 let currentGuess = [];
 
 document.addEventListener("keydown", function (event) {
@@ -42,3 +51,10 @@ document.addEventListener("keydown", function (event) {
     console.log(currentGuess)
 })
 
+
+// Logic for looping through guess boxes
+
+Array.from(guessBox).forEach((box, index) => {
+    box.innerText = currentGuess[index] || "";
+    // ||  if current index exists, use it, otherwise just use an emptry string to clear the box
+});
