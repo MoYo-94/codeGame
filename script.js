@@ -17,7 +17,7 @@ const correctCode = [];
 
 for (let i = 0; i < 4; i++) {
     const randomDigit = Math.floor(Math.random() * 10);
-    correctCode.push(string(randomDigit));
+    correctCode.push(String(randomDigit));
 
 }
 
