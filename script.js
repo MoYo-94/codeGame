@@ -13,7 +13,7 @@ const returnFromGame = document.getElementById("returnFromGame");
 const guessBox = document.getElementsByClassName("guessBox")
 const checkButton = document.getElementById("checkButton");
 const guessCountDisplay = document.getElementById("guessCountDisplay");
-
+const successPage = document.getElementById("successPage");
 
 // =========================
 // Game State 
@@ -96,7 +96,6 @@ document.addEventListener("keydown", function (event) {
         // ||  if current index exists, use it, otherwise just use an emptry string to clear the box
     });
 
-    console.log(currentGuess)
 
 });
 
@@ -109,8 +108,12 @@ document.addEventListener("keydown", function (event) {
 checkButton.addEventListener("click", function () {
 
     if (currentGuess.length === 4) {
+        let result = [];
+        result.length = 4;
         guessCount++;
         guessCountDisplay.innerText = guessCount;
+
+
 
         let allCorrect = true;
 
@@ -118,7 +121,11 @@ checkButton.addEventListener("click", function () {
             if (
                 currentGuess[i] !== correctCode[i]) {
                 allCorrect = false;
-                break;
+
+
+            } else {
+                result[i] = "green"
+
             }
 
         }
@@ -128,7 +135,5 @@ checkButton.addEventListener("click", function () {
         }
     }
 
-
 });
-
 
