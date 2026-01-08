@@ -108,10 +108,13 @@ document.addEventListener("keydown", function (event) {
 checkButton.addEventListener("click", function () {
 
     if (currentGuess.length === 4) {
-        let result = [];
-        result.length = 4;
         guessCount++;
         guessCountDisplay.innerText = guessCount;
+
+        // Create an array to store digits
+        let result = [];
+        result.length = 4;
+
 
 
 
@@ -122,13 +125,19 @@ checkButton.addEventListener("click", function () {
                 currentGuess[i] !== correctCode[i]) {
                 allCorrect = false;
 
-
             } else {
-                result[i] = "green"
+                result[i] = "green";
 
             }
 
         }
+
+        // Loops to say if the index is not green, loop through and make it black
+        for (let j = 0; j < 4; j++) {
+            if (result[j] != "green")
+                result[j] = "black"
+        }
+
         if (allCorrect) {
             gamePage.style.display = "none";
             successPage.style.display = "block";
@@ -136,4 +145,7 @@ checkButton.addEventListener("click", function () {
     }
 
 });
+
+
+
 
