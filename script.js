@@ -28,11 +28,16 @@ let guessCount = 0;
 // =========================
 
 
-for (let i = 0; i < 4; i++) {
+while(correctCode.length < 4) {
     const randomDigit = Math.floor(Math.random() * 10);
-    correctCode.push(String(randomDigit));
-
+    const strDigit= randomDigit.toString()
+    if(correctCode.includes(strDigit)){
+//Do Nothing
+    }else{
+    correctCode.push(strDigit);
+    }
 }
+console.log(correctCode);
 
 // =========================
 // Visual Display of Pages 
@@ -115,10 +120,9 @@ checkButton.addEventListener("click", function () {
         let result = [];
         result.length = 4;
 
-
-
-
         let allCorrect = true;
+
+//Green Loop Check
 
         for (let i = 0; i < 4; i++) {
             if (
@@ -132,19 +136,30 @@ checkButton.addEventListener("click", function () {
 
         }
 
-        // Loops to say if the index is not green, loop through and make it black
+// Yellow Loop Check
+
+for (let k = 0; k< 4; k++){
+    if (correctCode.includes(currentGuess[k]) && result[k] != "green"){
+        result[k] = "yellow";
+    }}
+
+
+
+// Loops to say if the index is not green, loop through and make it black
         for (let j = 0; j < 4; j++) {
-            if (result[j] != "green")
+            if(result[j] === undefined)
                 result[j] = "black"
         }
 
+
+console.log(result)
         if (allCorrect) {
             gamePage.style.display = "none";
             successPage.style.display = "block";
         }
-    }
+    
 
-});
+}});
 
 
 
